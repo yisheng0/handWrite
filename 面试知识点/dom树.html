@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOM 树转换示例</title>
+  </head>
+  <body>
+    <div id="content">
+      <h1>
+        标题
+        <span>1</span>
+        <span>1</span>
+        <span>1</span>
+      </h1>
+      <p>这是一个段落。</p>
+    </div>
+
+    <script>
+      function domTree(element) {
+        let obj = {
+          tag: element.tagName.toLowerCase(),
+          children: [],
+        };
+        // console.log(element.childNodes)
+        for (let i = 0; i < element.childNodes.length; i++) {
+          if (element.childNodes[i].nodeType === 1) {
+            obj.children.push(domTree(element.childNodes[i]));
+          }
+        }
+        return obj;
+      }
+
+      let contentDiv = document.getElementById("content");
+      let tree = domTree(contentDiv);
+      console.log(tree);
+    </script>
+  </body>
+</html>

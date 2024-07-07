@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOM节点计数器</title>
+  </head>
+  <body>
+
+    <div id="content">
+      <h1>示例标题</h1>
+      <span
+        >这是一个段落。
+        <a href=""></a>
+        <a href="">
+          <div>111</div>
+        </a>
+      </span>
+    </div>
+
+    <script>
+      function countDOMTags() {
+        const tagsMap = new Map();
+
+        function traverseDOM(node) {
+          if (node.nodeType === 1) {
+            const tagName = node.tagName.toLowerCase();
+            tagsMap.set(tagName, (tagsMap.get(tagName) || 0) + 1);
+            for (let i = 0; i < node.childNodes.length; i++) {
+              traverseDOM(node.childNodes[i]);
+            }
+          }
+        }
+        traverseDOM(document.getElementById("content"));
+        return tagsMap;
+      }
+
+      const tagsCountMap = countDOMTags();
+      console.log(tagsCountMap)
+    </script>
+  </body>
+</html>
+<!-- Node.ELEMENT_NODE (1): 一个元素节点，如<p>或<div>。
+    Node.ATTRIBUTE_NODE (2): 元素的属性。
+    Node.TEXT_NODE (3): 元素或属性中的文本内容。
+ -->

@@ -1,15 +1,12 @@
-let print = function(num,delay){
+let print = (nums)=>{
     return new Promise((resolve)=>{
         setTimeout(()=>{
-            console.log(num);
-            resolve()
-        },delay)
+            console.log(nums);
+            resolve();
+        },1000)
     })
 }
-let step = function(){
-    Promise.resolve()
-    .then(()=>print(1,1000)) 
-    .then(()=>print(2,1000))
-    .then(()=>print(3,1000))
-}
-step()
+Promise.resolve()
+.then(()=>print(1))
+.then(()=>print(2))
+.then(()=>print(3))

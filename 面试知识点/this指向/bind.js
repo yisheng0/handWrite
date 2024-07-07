@@ -1,6 +1,6 @@
-Function.prototype._bind = function (target, ...arg1) {
+Function.prototype._bind = function (target, ...arguments1) {
   let fn = this;
-  return function (...arg2) {
-    return fn.call(target, ...arg1, ...arg2);
+  return function (...args2) {
+    return fn.apply(target, arguments1.concat(args2));
   };
 };

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <div id="app">
+        <img src="./1333743.png" alt="" style="width: 100%; height: 100%;">
+    </div>
+    <script type="module">
+      function debounce(fn,delay){
+        let lastTime = 0;
+        return function () {
+          const now = new Date();
+          if (now - lastTime > delay) {
+            fn.apply(this, arguments);
+            lastTime = now;
+          }
+        };
+      }  
+      function autoscale(selector, options) {
+        const el = document.querySelector(selector);
+        const { width, height } = options;
+
+        function init() {
+          const scalex = window.innerWidth / width;
+          const scaleY = window.innerHeight / height;
+          const scale = Math.min(scalex, scaleY);
+          const left = (window.innerWidth - width * scale) / 2;
+          const top = (window.innerHeight - height * scale) / 2;
+
+          el.style.transformOrigin = "top left";
+          el.style.transition = "transform 0.5s";
+          el.style.transform = `translate(${left}px, ${top}px) scale(${scale})`;
+        }
+
+        init();
+        window.addEventListener("resize", debounce(init, 200));
+      }
+      autoscale("#app", {
+        width: 1920,
+        height: 1080,
+      });
+    </script>
+    <script src="js/echarts-all.js"></script>
+  </body>
+</html>

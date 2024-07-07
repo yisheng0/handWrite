@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flexbox Align-content and Align-self Example</title>
+<style>
+  .container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-around; 
+    /* align-content: center;  */
+    height: 200px; 
+    border: 1px solid #000; 
+  }
+
+  .item {
+    flex: 1 1 200px; /* 项目的弹性盒子模型属性 */
+    margin: 10px; /* 项目的外边距 */
+    padding: 20px; /* 项目的内边距 */
+    background-color: lightblue; /* 项目的背景颜色 */
+    text-align: center; /* 文本居中 */
+  }
+
+  .align-self-start {
+    align-self: flex-start; /* 单个项目在交叉轴起点对齐 */
+  }
+
+  .align-self-center {
+    align-self: center; /* 单个项目在交叉轴居中对齐 */
+  }
+
+  .align-self-end {
+    align-self: flex-end; 
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="item align-self-start">Align Self Start</div>
+  <div class="item align-self-center">Align Self Center</div>
+  <div class="item align-self-end">Align Self End</div>
+  <div class="item">Default Alignment</div>
+  <div class="item">Default Alignment</div>
+  <div class="item">Default Alignment</div>
+  <div class="item align-self-start">Align Self Start</div>
+  <div class="item align-self-center">Align Self Center</div>
+  <div class="item align-self-end">Align Self End</div>
+  <div class="item">Default Alignment</div>
+  <div class="item">Default Alignment</div>
+  <div class="item">Default Alignment</div>
+</div>
+
+</body>
+</html>
